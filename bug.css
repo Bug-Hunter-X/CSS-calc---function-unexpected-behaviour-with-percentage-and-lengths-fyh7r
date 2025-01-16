@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an uncommon bug that might occur when using the `calc()` function with percentages and lengths:
+
+```css
+.container {
+  width: 50%;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.inner {
+  width: calc(100% - 20px);
+}
+```
+
+The intention is to make the `.inner` element's width 20px less than its container's width.  However, because the `100%` in `calc()` refers to the width of the element *before* the padding and border are applied, the subtraction won't give you the expected result. The result will be less than intended. The border and padding are applied *after* the calculation, causing unexpected behaviour.
+
+This is subtle and often overlooked, leading to layout inconsistencies.
