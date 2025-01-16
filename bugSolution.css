@@ -1,0 +1,31 @@
+The solution is to include the padding and border in the calculation.  Here's how you can correct the code:
+
+```css
+.container {
+  width: 50%;
+  padding: 10px;
+  border: 2px solid black;
+  box-sizing: border-box; /*This is optional but recommended for better understanding*/
+}
+
+.inner {
+  width: calc(100% - 20px - 20px); /*Subtract padding and border*/
+}
+```
+
+Or, to make it more robust and easier to understand, we should use `box-sizing: border-box;` on the `.container`:
+
+```css
+.container {
+  width: 50%;
+  padding: 10px;
+  border: 2px solid black;
+  box-sizing: border-box; 
+}
+
+.inner {
+  width: calc(100% - 20px);
+}
+```
+
+By setting `box-sizing: border-box;`, the padding and border are included within the element's total width, making the calculation simpler and more accurate.
